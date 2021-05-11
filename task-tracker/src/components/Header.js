@@ -1,24 +1,25 @@
-import propTypes from 'prop-types'
-import Button from './Button'
+import propTypes from "prop-types"
+import Button from "./Button"
 
-const Header = ({ title }) => {
-    const onClick = () => {
-        console.log('click')
-    }
-    return (
-        <header className='header'>
-            <h1>{title}</h1>
-            <Button color='green' text='Add' onClick={onClick} />
-        </header>
-    )
+const Header = ({ title, onAdd, showAdd }) => {
+  return (
+    <header className="header">
+      <h1>{title}</h1>
+      <Button
+        color={showAdd ? "red" : "green"}
+        text={showAdd ? "close" : "Add"}
+        onClick={onAdd}
+      />
+    </header>
+  )
 }
 
 Header.defaultProps = {
-    title: 'Task Tracker',
+  title: "Task Tracker",
 }
 
 Header.propTypes = {
-    title: propTypes.string,
+  title: propTypes.string.isRequired,
 }
 
 //Dynamic CSS in JS
